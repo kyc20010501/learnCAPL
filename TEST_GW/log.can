@@ -1,0 +1,81 @@
+/*@!Encoding:936*/
+variables
+{
+    char LogFilePath[1000]="..\\TestLog\\GW\\";
+    char cTcId[500];
+    char cDutName[100];
+    char sLogFileName[1000];
+    char cTestStartTime[100];
+    char cTestStartDate[100];
+    int i=0;
+}
+
+
+on stopMeasurement
+{
+    stopLogging();
+}
+
+
+on sysvar Env_LogFileState::Env_LogFileState
+{
+  if( @sysvar::Env_LogFileState::Env_LogFileState == 1 )
+    {
+     
+      write("i=%d",i);
+        if(i==0)
+        {
+        stopLogging();
+        setLogFileName("1111");
+        startLogging();
+        }
+           else if(i==1)
+        {
+        stopLogging();
+        setLogFileName("2222");
+        startLogging();
+        }
+                 if(i==2)
+        {
+        stopLogging();
+        setLogFileName("3333");
+        startLogging();
+        }
+                 if(i==3)
+        {
+        stopLogging();
+        setLogFileName("4444");
+        startLogging();
+        }
+                 if(i==4)
+        {
+        stopLogging();
+        setLogFileName("5555");
+        startLogging();
+        }
+                 if(i==5)
+        {
+        stopLogging();
+        setLogFileName("6666");
+        startLogging();
+        }
+                 if(i==6)
+        {
+        stopLogging();
+        setLogFileName("7777");
+        startLogging();
+        }
+                 if(i==7)
+        {
+        stopLogging();
+        setLogFileName("8888");
+        startLogging();
+        }
+         i++;
+    }
+}
+
+on message *
+{
+    OutPut(this);
+}
